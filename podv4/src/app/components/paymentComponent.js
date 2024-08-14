@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useFileUrl } from '../context/fileUrlContext';
 import { db } from '../../../firebase';
 import { collection, doc, setDoc } from 'firebase/firestore';
+import config from 'config.json';
 
 const PaymentForm = () => {
     const stripe = useStripe();
@@ -56,7 +57,7 @@ const PaymentForm = () => {
 
         console.log(jsonData)
         const apiEndpoint = 'https://www.slant3dapi.com/api/order';
-        const apiKeyValue = 'YOUR_KEY';
+        const apiKeyValue = config.slantApiKey;
 
         try {
             const apiResponse = await axios.post(apiEndpoint, jsonData, {

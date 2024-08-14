@@ -1,12 +1,13 @@
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import axios from 'axios';
 import { storage } from '../../../firebase'; // Ensure this path is correct
+import config from 'config.json'; 
 
 class UploadFileService {
     constructor() {
         this.storage = storage;
         this.slicerApiUrl = 'https://www.slant3dapi.com/api/slicer';
-        this.apiKey = 'YOUR_API_KEY';
+        this.apiKey = config.slantApiKey;
     }
 
     async uploadFile(file, onProgress) {

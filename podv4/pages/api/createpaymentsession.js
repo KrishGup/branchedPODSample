@@ -2,8 +2,10 @@
 'use server'
 import Stripe from 'stripe';
 
+import config from 'config.json';
+
 // Initialize Stripe with your secret key
-const stripe = new Stripe('YOUR_STRIPE_KEY'); // Use environment variable for the key
+const stripe = new Stripe(config.stripeApiKey); // Use environment variable for the key
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
